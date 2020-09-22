@@ -16,15 +16,55 @@ int max (int a, int b) {
 }
 
 //Declare your rectangle structure here!
-
+struct square{
+  int x;
+  int y;
+  int width;
+  int height;
+};
+typedef struct square rectangle;
 
 rectangle canonicalize(rectangle r) {
   //WRITE THIS FUNCTION
+  if (r.width<0){
+    r.x = r.x + r.width;
+    r.width = r.width * (-1);
+  }
+  if (r.height<0){
+    r.y = r.y + r.height;
+    r.height = r.height * (-1);
+  }
   return r;
 }
 rectangle intersection(rectangle r1, rectangle r2) {
-  //WRITE THIS FUNCTION
-  return r1;
+  r1=canonicalize(r1);
+  r2=canonicalize(r2);
+  //WRITE THIS FUNCTION 
+  int h1_up = r1.y+r1.height;
+  int h2_up = r2.y+r2.height;
+  int w1_r = r1.x+r1.width;
+  int w2_r = r2.x+r2.width;
+  rectangle r;
+  
+  r.x = max(r1.x,r2.x);
+  r.y = max(r1.y,r2.y);
+  if ((r2.y > h1_up) || (r1.y > h2_up) || (r1.x > w2_r) || (r2.x > w1_r)){
+    r.height = 0;
+    r.width = 0;
+  }
+  else if((r1.x == w2_r) || (r2.x == w1_r)){
+    r.width = 0;
+    r.height = (min(h1_up,h2_up)- max(r1.y,r2.y));
+  }
+  else if ((r2.y == h1_up) || (r1.y == h2_up)){
+    r.height = 0;
+    r.width = (min(w1_r,w2_r)- max(r1.x,r2.x));
+  }
+  else {
+    r.width = (min(w1_r,w2_r)- max(r1.x,r2.x));
+    r.height = (min(h1_up,h2_up)- max(r1.y,r2.y));
+  }
+  return r ;
 }
 
 //You should not need to modify any code below this line
@@ -72,7 +112,7 @@ int main (void) {
   r4.height = 2;
   printf("r4 is ");
   printRectangle(r4);
-
+  
   //test everything with r1
   rectangle i = intersection(r1,r1);
   printf("intersection(r1,r1): ");
