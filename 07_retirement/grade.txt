@@ -1,4 +1,4 @@
-Grading at Wed Sep 23 01:34:56 UTC 2020
+Grading at Wed Sep 23 01:38:59 UTC 2020
 Attempting to compile retirement.c
 Checking for struct _retire_info
 not found
@@ -13,7 +13,7 @@ not found
 Checking for void retirement (int startAge, double initial,  retire_info working,  retire_info retired)
 not found
 Checking for int main(void)
-Found on line 37, column 1 
+Found on line 38, column 1 
 Your code does not have the right struct, fields, and/or functions.
 
 Overall Grade: F
