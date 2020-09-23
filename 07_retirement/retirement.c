@@ -1,16 +1,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-struct _retire_infor
+struct _retire_info
 {
   int months;
   double contribution;
   double rate_of_return;
 };
 
-typedef struct _retire_infor retire_infor;
+typedef struct _retire_info retire_info;
 
-void retirement(int startAge, double initial, retire_infor working, retire_infor retired){
+void retirement(int startAge, double initial, retire_info working, retire_info retired){
   double balance = initial;
   int Age = startAge/12;
   int month = startAge%12;
@@ -36,8 +36,8 @@ void retirement(int startAge, double initial, retire_infor working, retire_infor
 }
 
 int main(void){
-  retire_infor Working;
-  retire_infor Retired;
+  retire_info Working;
+  retire_info Retired;
   
   Working.months = 489;
   Working.contribution = 1000;
