@@ -7,6 +7,7 @@ struct _retire_infor
   double contribution;
   double rate_of_return;
 };
+
 typedef struct _retire_infor retire_infor;
 
 void retirement(int startAge, double initial, retire_infor working, retire_infor retired){
