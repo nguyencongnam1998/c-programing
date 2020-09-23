@@ -35,7 +35,7 @@
    monthly contribution to the balance.
    For example, if you have $1,000 in the account, earn a 0.5% rate of
    return per month, and contribute $100 per month, you would
-   cmopute 1000 * 0.005 = $5 in interest earned.  You would then
+   compute 1000 * 0.005 = $5 in interest earned.  You would then
    add this plus the monthly contribution to the balance to end up
    with $1105 in the account at the end of the month.
 
