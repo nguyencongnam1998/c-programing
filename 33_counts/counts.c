@@ -55,15 +55,20 @@ void addCount(counts_t * c, const char * name) {
 }
 void printCounts(counts_t * c, FILE * outFile) {
   //WRITE ME
-  for(int i=0; i < c->nCounts; i++) {
-    if(c->counts[i]->name == NULL) {
+  int unknownIndex = -1;
+  for(int i=0; i < c->Arr_size; i++)
+  {
+    if(c->cntArr[i]->name == NULL)
+    {
       unknownIndex = i;
-    } else {
-      fprintf(outFile, "%s: %d\n", c->counts[i]->name, c->counts[i]->count);
+    }
+    else
+    {
+      fprintf(outFile, "%s: %d\n", c->cntArr[i]->string, c->cntArr[i]->count);
     }
   }
   if (unknownIndex != -1) {
-    fprintf(outFile, "<unknown> : %d\n", c->counts[unknownIndex]->count);
+    fprintf(outFile, "<unknown> : %d\n", c->cntArr[unknownIndex]->count);
   }
 }
 void freeCounts(counts_t * c) {
