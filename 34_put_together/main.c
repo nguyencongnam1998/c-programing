@@ -35,36 +35,28 @@ counts_t * countFile(const char * filename, kvarray_t * kvPairs) {
 
 int main(int argc, char ** argv) {
   //WRITE ME (plus add appropriate error checking!)
- //read the key/value pairs from the file named by argv[1] (call the result kv)
-  if(argc<3){
-    fprintf(stderr,"%s : number of arguments is not enough!\n",argv[0]);
+  if(argc < 2){
+    fprintf(stderr,"no enough arguments");
     return EXIT_FAILURE;
   }
-  kvarray_t *kv=readKVs(argv[1]);
- //count from 2 to argc (call the number you count i)
-  for(int i=2;i<argc;i++)
+  //read the key/value pairs from the file named by argv[1] (call the result kv)
+  kvarray_t * kv=readKVs(argv[1]);
+  //count from 2 to argc (call the number you count i)
+  for(int i = 2 ; i<argc; i++)
   {
     //count the values that appear in the file named by argv[i], using kv as the key/value pair
     //   (call this result c)
-    counts_t *c=countFile(argv[i],kv);
+    counts_t * c=countFile(argv[i], kv);
+    if(c == NULL) return EXIT_FAILURE;
+    
     //compute the output file name from argv[i] (call this outName)
-    char *outName=malloc(strlen(argv[i])+strlen(".counts")+1);
-    if(outName==NULL)
-    {
-      fprintf(stderr,"%s : Invalid memory allocation!\n",argv[0]);
-      return EXIT_FAILURE;
-    }
-    outName[0]='\0';
-    outName=strcat(outName,argv[i]);
-    outName=strcat(outName,".counts");
+    char *outName= computeOutputFileName(argv[i]);
+    
     //open the file named by outName (call that f)
-    FILE *f=fopen(outName,"w");
-    if(f==NULL){
-      fprintf(stderr,"%s : Could not open the file '%s'!\n",argv[0],outName);
-      return EXIT_FAILURE;
-    }
+    FILE* f= fopen(outName,"w");
+    
     //print the counts from c into the FILE f
-    printCounts(c,f);
+    printCounts(c, f);
     //close f
     if(fclose(f)!=0){
       fprintf(stderr,"%s : Can not close file '%s'!\n",argv[0],outName);
@@ -76,5 +68,6 @@ int main(int argc, char ** argv) {
   }
  //free the memory for kv
   freeKVs(kv);
+  
   return EXIT_SUCCESS;
 }
