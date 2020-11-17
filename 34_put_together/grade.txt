@@ -1,46 +1,30 @@
-Grading at Tue Nov 17 09:12:26 UTC 2020
+Grading at Tue Nov 17 09:23:05 UTC 2020
 Attempting to compile:
 rm -f  outname.o  counts.o  main.o  kv.o count_values *~
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 outname.c
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 counts.c
-gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 main.c
-gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 kv.c
-gcc -Wall -Werror -std=gnu99 -pedantic -ggdb3 -o count_values  outname.o  counts.o  main.o  kv.o
-#################################################
-testcase1:
-testcase1 passed, your program successfully indicated a failure
-  - Valgrind was clean (no errors, no memory leaks)
-valgrind was clean
-#################################################
-testcase2:
-Line_3_did_not_match
-Your file did not match the expected ouput
-Comparing file list1a.txt.counts with answer
-Your output is correct
-Comparing file list1b.txt.counts with answer
-Line_4_did_not_match
-Your file did not match the expected ouput
-Your output is incorrect
-#################################################
-testcase3:
-Your file matched the expected output
-Comparing file list2a.txt.counts with answer
-Your output is correct
-Comparing file list2b.txt.counts with answer
-Line_2_did_not_match
-Your file did not match the expected ouput
-Your output is incorrect
-Comparing file list2c.txt.counts with answer
-Line_5_did_not_match
-Your file did not match the expected ouput
-Your output is incorrect
-#################################################
-testcase4:
-Line_6_did_not_match
-Your file did not match the expected ouput
-Comparing file list3a.txt.counts with answer
-Your output is correct
-  - Valgrind was clean (no errors, no memory leaks)
-valgrind was clean
+counts.c: In function ‘printCounts’:
+counts.c:58:21: error: ‘counts_t {aka struct _counts_t}’ has no member named ‘nCounts’
+   for(int i=0; i < c->nCounts; i++) {
+                     ^
+counts.c:59:9: error: ‘counts_t {aka struct _counts_t}’ has no member named ‘counts’
+     if(c->counts[i]->name == NULL) {
+         ^
+counts.c:60:7: error: ‘unknownIndex’ undeclared (first use in this function)
+       unknownIndex = i;
+       ^
+counts.c:60:7: note: each undeclared identifier is reported only once for each function it appears in
+counts.c:62:37: error: ‘counts_t {aka struct _counts_t}’ has no member named ‘counts’
+       fprintf(outFile, "%s: %d\n", c->counts[i]->name, c->counts[i]->count);
+                                     ^
+counts.c:62:57: error: ‘counts_t {aka struct _counts_t}’ has no member named ‘counts’
+       fprintf(outFile, "%s: %d\n", c->counts[i]->name, c->counts[i]->count);
+                                                         ^
+counts.c:66:43: error: ‘counts_t {aka struct _counts_t}’ has no member named ‘counts’
+     fprintf(outFile, "<unknown> : %d\n", c->counts[unknownIndex]->count);
+                                           ^
+Makefile:10: recipe for target 'counts.o' failed
+make: *** [counts.o] Error 1
+The code did not compile! Please try git add . to push all files in your working directory 
 
-Overall Grade: D
+Overall Grade: F
