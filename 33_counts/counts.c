@@ -30,7 +30,7 @@ void addCount(counts_t * c, const char * name) {
   {
     for(size_t i=0;i<c->Arr_size;i++)
     {
-      if(!strcmp(c->AcntArr[i]->string,str))
+      if(!strcmp(c->cntArr[i]->string,str))
       {
 	c->cntArr[i]->count++;
 	str_is_found=1;
