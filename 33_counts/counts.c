@@ -8,7 +8,7 @@ counts_t * createCounts(void) {
   counts_t *ans=malloc(sizeof(*ans));
   if(ans!=NULL)
   {
-    ans->AcntArr=NULL;
+    ans->cntArr=NULL;
     ans->Arr_size=0;
   }
   return ans;
@@ -32,7 +32,7 @@ void addCount(counts_t * c, const char * name) {
     {
       if(!strcmp(c->AcntArr[i]->string,str))
       {
-	c->AcntArr[i]->count++;
+	c->cntArr[i]->count++;
 	str_is_found=1;
       }
     }
@@ -44,9 +44,9 @@ void addCount(counts_t * c, const char * name) {
     assert(cnt!=NULL);
     cnt->string=str;
     cnt->count=1;
-    c->AcntArr=realloc(c->AcntArr,(c->Arr_size+1)*sizeof(*c->AcntArr));
+    c->cntArr=realloc(c->cntArr,(c->Arr_size+1)*sizeof(*c->cntArr));
     c->Arr_size++;
-    c->AcntArr[c->Arr_size-1]=cnt;
+    c->cntArr[c->Arr_size-1]=cnt;
   }
   else
   {
@@ -58,16 +58,16 @@ void printCounts(counts_t * c, FILE * outFile) {
   size_t unknown_index=c->Arr_size;
   for(size_t i=0;i<c->Arr_size;i++)
   {
-    if(!strcmp(c->AcntArr[i]->string,"unknown"))
+    if(!strcmp(c->cntArr[i]->string,"unknown"))
     {
       unknown_index=i;
       continue;
     }
-    fprintf(outFile,"%s: %ld\n",c->AcntArr[i]->string,c->AcntArr[i]->count);
+    fprintf(outFile,"%s: %ld\n",c->cntArr[i]->string,c->cntArr[i]->count);
   }
-  if(unknown_index<c->Arr_size && c->AcntArr[unknown_index]->count>0)
+  if(unknown_index<c->Arr_size && c->cntArr[unknown_index]->count>0)
   {
-    fprintf(outFile,"<%s> : %ld\n",c->AcntArr[unknown_index]->string,c->AcntArr[unknown_index]->count);
+    fprintf(outFile,"<%s> : %ld\n",c->cntArr[unknown_index]->string,c->cntArr[unknown_index]->count);
   }
 }
 
@@ -75,9 +75,9 @@ void freeCounts(counts_t * c) {
   //WRITE ME
   for(size_t i=0;i<c->Arr_size;i++)
   {
-    free(c->AcntArr[i]->string);
-    free(c->AcntArr[i]);
+    free(c->cntArr[i]->string);
+    free(c->cntArr[i]);
   }
-  free(c->AcntArr);
+  free(c->cntArr);
   free(c);
 }
