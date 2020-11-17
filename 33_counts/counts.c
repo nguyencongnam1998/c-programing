@@ -58,17 +58,17 @@ void printCounts(counts_t * c, FILE * outFile) {
   int unknownIndex = -1;
   for(int i=0; i < c->Arr_size; i++)
   {
-    if(c->cntArr[i]->name == NULL)
+    if(c->cntArr[i]->string == NULL)
     {
       unknownIndex = i;
     }
     else
     {
-      fprintf(outFile, "%s: %d\n", c->cntArr[i]->string, c->cntArr[i]->count);
+      fprintf(outFile, "%s: %ld\n", c->cntArr[i]->string, c->cntArr[i]->count);
     }
   }
   if (unknownIndex != -1) {
-    fprintf(outFile, "<unknown> : %d\n", c->cntArr[unknownIndex]->count);
+    fprintf(outFile, "<unknown> : %ld\n", c->cntArr[unknownIndex]->count);
   }
 }
 void freeCounts(counts_t * c) {
