@@ -1,28 +1,19 @@
-Grading at Tue Nov 17 09:23:05 UTC 2020
+Grading at Tue Nov 17 09:29:26 UTC 2020
 Attempting to compile:
 rm -f  outname.o  counts.o  main.o  kv.o count_values *~
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 outname.c
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 counts.c
 counts.c: In function ‘printCounts’:
-counts.c:58:21: error: ‘counts_t {aka struct _counts_t}’ has no member named ‘nCounts’
-   for(int i=0; i < c->nCounts; i++) {
-                     ^
-counts.c:59:9: error: ‘counts_t {aka struct _counts_t}’ has no member named ‘counts’
-     if(c->counts[i]->name == NULL) {
-         ^
-counts.c:60:7: error: ‘unknownIndex’ undeclared (first use in this function)
-       unknownIndex = i;
-       ^
-counts.c:60:7: note: each undeclared identifier is reported only once for each function it appears in
-counts.c:62:37: error: ‘counts_t {aka struct _counts_t}’ has no member named ‘counts’
-       fprintf(outFile, "%s: %d\n", c->counts[i]->name, c->counts[i]->count);
-                                     ^
-counts.c:62:57: error: ‘counts_t {aka struct _counts_t}’ has no member named ‘counts’
-       fprintf(outFile, "%s: %d\n", c->counts[i]->name, c->counts[i]->count);
-                                                         ^
-counts.c:66:43: error: ‘counts_t {aka struct _counts_t}’ has no member named ‘counts’
-     fprintf(outFile, "<unknown> : %d\n", c->counts[unknownIndex]->count);
-                                           ^
+counts.c:61:20: error: ‘one_count_t {aka struct _one_count_t}’ has no member named ‘name’
+     if(c->cntArr[i]->name == NULL)
+                    ^
+counts.c:67:24: error: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘size_t {aka long unsigned int}’ [-Werror=format=]
+       fprintf(outFile, "%s: %d\n", c->cntArr[i]->string, c->cntArr[i]->count);
+                        ^
+counts.c:71:22: error: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘size_t {aka long unsigned int}’ [-Werror=format=]
+     fprintf(outFile, "<unknown> : %d\n", c->cntArr[unknownIndex]->count);
+                      ^
+cc1: all warnings being treated as errors
 Makefile:10: recipe for target 'counts.o' failed
 make: *** [counts.o] Error 1
 The code did not compile! Please try git add . to push all files in your working directory 
