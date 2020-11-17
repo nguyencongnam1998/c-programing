@@ -9,6 +9,9 @@ input2.txt
 input3.txt
 input6.txt
 
+input.tx
+2 input.txt
+input4.txt
 vovavovan.taolao
 fake.txt
 abc input2.txt
