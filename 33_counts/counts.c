@@ -16,9 +16,11 @@ counts_t * createCounts(void) {
 void addCount(counts_t * c, const char * name) {
   //WRITE ME
   char *str=NULL;
+  // int unknowIdex=1;
   if(name==NULL)
   {
-    str=strdup("Unknown");
+    //unknowIdex=-1;
+    str=strdup("unknown");
   }
   else
   {
@@ -42,6 +44,8 @@ void addCount(counts_t * c, const char * name) {
   {
     one_count_t *cnt=malloc(sizeof(*cnt));
     assert(cnt!=NULL);
+    //if (unknowIdex== -1)cnt->string=NULL;
+    //else{ cnt->string=str;}
     cnt->string=str;
     cnt->count=1;
     c->cntArr=realloc(c->cntArr,(c->Arr_size+1)*sizeof(*c->cntArr));
@@ -58,7 +62,7 @@ void printCounts(counts_t * c, FILE * outFile) {
   int unknownIndex = -1;
   for(int i=0; i < c->Arr_size; i++)
   {
-    if(c->cntArr[i]->string == NULL)
+    if((c->cntArr[i]->string == NULL)||(strcmp(c->cntArr[i]->string, "unknown") == 0))
     {
       unknownIndex = i;
     }
