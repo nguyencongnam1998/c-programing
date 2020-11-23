@@ -51,7 +51,7 @@ void freeAll(future_cards_t * fee_c, deck_t ** hands, size_t n_hands, deck_t * r
 
 int main(int argc, char ** argv) {
   //YOUR CODE GOES HERE
-  int n_trials;
+  int n_trails;
   deck_t ** hands;
   deck_t * rem_cards;
   size_t n_hands = 0;
