@@ -1,4 +1,4 @@
-Grading at Mon Nov 23 09:04:38 UTC 2020
+Grading at Mon Nov 23 09:29:53 UTC 2020
 Running 'make clean' to do a clean build of your project
 rm -rf *.o poker *~
 Running 'make poker OTHERFLAGS=-O3' to build your project
@@ -8,13 +8,13 @@ gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o eval.o eval.c
 gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o future.o future.c
 gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o input.o input.c
 gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o main.o main.c
-main.c: In function ‘main’:
-main.c:77:16: error: implicit declaration of function ‘strToInt’ [-Werror=implicit-function-declaration]
-     n_trails = strToInt(argv[2]);
-                ^
-cc1: all warnings being treated as errors
-<builtin>: recipe for target 'main.o' failed
-make: *** [main.o] Error 1
+gcc -o poker -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3 cards.o deck.o eval.o future.o input.o main.o
+main.o: In function `strToInt':
+/graderhome/work/c4prj3_finish/main.c:12: multiple definition of `strToInt'
+input.o:/graderhome/work/c4prj3_finish/input.c:7: first defined here
+collect2: error: ld returned 1 exit status
+Makefile:4: recipe for target 'poker' failed
+make: *** [poker] Error 1
 make failed
 
 Overall Grade: F
