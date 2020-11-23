@@ -9,13 +9,14 @@
 #include "future.h"
 #include "input.h"
 
-int strToInt(char *data){
+int strconint(char* data) {
   char str[50];
-  int ans=0;
+  int ans = 0;
   strcpy(str, data);
-  ans=atoi(str);
+  ans = atoi(str);
   return ans;
 }
+
 
 void actScore(deck_t ** hands, size_t n_hands, int * win_arr){
   size_t idex = 0;
@@ -83,7 +84,7 @@ int main(int argc, char ** argv) {
   }
   else
   {
-    n_trails = strToInt(argv[2]);
+    n_trails = strconint(argv[2]);
   }
 
   f = fopen(argv[1],"r");
