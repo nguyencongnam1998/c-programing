@@ -2,11 +2,20 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <ctype.h>
+#include <string.h>
 #include "cards.h"
 #include "deck.h"
 #include "eval.h"
 #include "future.h"
 #include "input.h"
+
+int strToInt(char *data){
+  char str[50];
+  int ans=0;
+  strcpy(str, data);
+  ans=atoi(str);
+  return ans;
+}
 
 void actScore(deck_t ** hands, size_t n_hands, int * win_arr){
   size_t idex = 0;
