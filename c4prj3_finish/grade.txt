@@ -1,4 +1,4 @@
-Grading at Mon Nov 23 09:02:07 UTC 2020
+Grading at Mon Nov 23 09:04:38 UTC 2020
 Running 'make clean' to do a clean build of your project
 rm -rf *.o poker *~
 Running 'make poker OTHERFLAGS=-O3' to build your project
@@ -9,16 +9,9 @@ gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o future.o future.c
 gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o input.o input.c
 gcc -Wall -Werror -ggdb3 -std=gnu99 -pedantic -O3   -c -o main.o main.c
 main.c: In function ‘main’:
-main.c:73:5: error: ‘n_trails’ undeclared (first use in this function)
-     n_trails = 10000;
-     ^
-main.c:73:5: note: each undeclared identifier is reported only once for each function it appears in
 main.c:77:16: error: implicit declaration of function ‘strToInt’ [-Werror=implicit-function-declaration]
      n_trails = strToInt(argv[2]);
                 ^
-main.c:54:7: error: unused variable ‘n_trials’ [-Werror=unused-variable]
-   int n_trials;
-       ^
 cc1: all warnings being treated as errors
 <builtin>: recipe for target 'main.o' failed
 make: *** [main.o] Error 1
